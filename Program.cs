@@ -35,22 +35,41 @@ do
  Console.WriteLine("2.Restar");
  Console.WriteLine("3.Multiplicar");
  Console.WriteLine("4.Dividir");
+ Console.WriteLine("5.Valor Absoluto");
+ Console.WriteLine("6.Cuadrado");
+ Console.WriteLine("7.Raiz Cuadrada");
+ Console.WriteLine("8.Seno");
+ Console.WriteLine("9.Coseno");
+ Console.WriteLine("10.Maximo numero");
+ Console.WriteLine("11.Minimo numero");
  string opcion=Console.ReadLine(); 
- if(!int.TryParse(opcion, out int opc) || opc<1 || opc > 4)
+ if(!int.TryParse(opcion, out int opc) || opc<1 || opc > 11)
     {
         Console.WriteLine("Opcion invalida");
     }
     else
     {
-        Console.WriteLine("\nIngrese el primer numero: ");
-        while (!double.TryParse(Console.ReadLine(), out num1))
+        if (opc >= 1 || opc<=4 || opc==10 || opc==11)
         {
-            Console.WriteLine("Error, ingrese un numero: ");
+            Console.WriteLine("\nIngrese el primer numero: ");
+            while (!double.TryParse(Console.ReadLine(), out num1))
+            {
+                Console.WriteLine("Error, ingrese un numero: ");
+            }
+            Console.WriteLine("\nIngrese el segundo numero: ");
+            while (!double.TryParse(Console.ReadLine(), out num2))
+            {
+                Console.WriteLine("Error, ingrese un numero: ");
+            }
         }
-        Console.WriteLine("\nIngrese el segundo numero: ");
-        while (!double.TryParse(Console.ReadLine(), out num2))
+        else
         {
-            Console.WriteLine("Error, ingrese un numero: ");
+            Console.WriteLine("\nIngrese el numero: ");
+            while (!double.TryParse(Console.ReadLine(), out num1))
+            {
+                Console.WriteLine("Error, ingrese un numero: ");
+            } 
+            num2=0;
         }
      double resultado = 0;
         switch (opcion)
@@ -82,7 +101,48 @@ do
                     Console.Write("No se puede dividir");
                 }
             break;          
-
+        case "5":
+            Console.Write("La valor absoluto es:");
+            resultado = Math.Abs(num1);
+            Console.WriteLine(resultado);
+            break;
+        case "6":
+            Console.Write("El cuadrado es:");
+            resultado = Math.Pow(num1,2);
+            Console.WriteLine(resultado);
+            break;
+        case "7":
+                if (num1 >= 0)
+                {
+                   Console.Write("La raiz cuadrada es:");
+                   resultado = Math.Sqrt(num1);
+                   Console.WriteLine(resultado);
+                }
+                else
+                {
+                    Console.WriteLine("No se pueden calcular raices de numeros negativos");
+                }
+            break;
+        case "8":
+            Console.Write("El seno es:");
+            resultado = Math.Sin(num1);
+            Console.WriteLine(resultado);
+            break;
+        case "9":
+            Console.Write("El coseno es:");
+            resultado = Math.Cos(num1);
+            Console.WriteLine(resultado);
+            break;
+        case "10":
+            Console.Write("El maximo numero es:");
+            resultado = Math.Max(num1,num2);
+            Console.WriteLine(resultado);
+            break;
+        case "11":
+            Console.Write("El menor numero es:");
+            resultado = Math.Min(num1, num2);
+            Console.WriteLine(resultado);
+            break;                        
         }
     }
     Console.WriteLine("\n¿Desea realizar otro calculo? (s/n): ");
